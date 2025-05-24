@@ -1,18 +1,19 @@
 
 import React from "react";
-import { Link, useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate } from "react-router"; 
 import Swal from "sweetalert2";
 
 const MyGroups = () => {
   const myGroup = useLoaderData();
-  console.log(myGroup);
- 
- const navigate = useNavigate()
- navigate("/Login")
+  const navigate = useNavigate(); 
 
-  // delete function
+  // Update handler
+  const handleUpdate = (id) => {
+    navigate(`/updateGroup/${id}`);
+  };
+
+  // delete function (unchanged)
   const handleDelete = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -53,8 +54,8 @@ const MyGroups = () => {
               <th>Location</th>
               <th>Members</th>
               <th>Start Date</th>
-              <th>Name</th>     {/* ✅ Added userName */}
-              <th>Email</th>    {/* ✅ Added userEmail */}
+              <th>Name</th>
+              <th>Email</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -73,14 +74,18 @@ const MyGroups = () => {
                 <td>{group.meetingLocation}</td>
                 <td>{group.maxMembers}</td>
                 <td>{group.startDate}</td>
-                <td>{group.userName || "N/A"}</td>    {/* ✅ Show Name */}
-                <td>{group.userEmail || "N/A"}</td>   {/* ✅ Show Email */}
+                {/* <td>{group.userName || "N/A"}</td>
+                <td>{group.userEmail || "N/A"}</td> */}
+                <td>{group.userName }</td>
+                <td>{group.userEmail }</td>
                 <td className="flex gap-4 mt-4">
-                  <Link to={`/updateGroup/${group._id}`}>
-                    <button className="btn btn-sm btn-outline btn-primary">
-                      Update
-                    </button>
-                  </Link>
+                  {/*  Navigate to update route */}
+                  <button
+                    onClick={() => handleUpdate(group._id)}
+                    className="btn btn-sm btn-outline btn-primary"
+                  >
+                    Update
+                  </button>
                   <button
                     onClick={() => handleDelete(group._id)}
                     className="btn btn-sm btn-outline btn-primary"
@@ -98,6 +103,3 @@ const MyGroups = () => {
 };
 
 export default MyGroups;
-
-
-

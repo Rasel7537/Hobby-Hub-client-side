@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const UpdateGroup = () => {
   const {
@@ -15,7 +16,7 @@ const UpdateGroup = () => {
     userName,
     userEmail,
   } = useLoaderData();
-
+    const { user } = useContext(AuthContext);
   //updated  from data  function
   const handleUpdatePeople = (e) => {
     e.preventDefault();
@@ -23,6 +24,8 @@ const UpdateGroup = () => {
     const formData = new FormData(form);
     const updatedGroup = Object.fromEntries(formData.entries());
     console.log(updatedGroup);
+    updatedGroup.username= user.displayName
+    updatedGroup.userEmail= user.email
 
     //send updated group to the DB
     fetch(`https://assignment-ten-server-site-brown.vercel.app/peoples/${_id}`, {
@@ -184,7 +187,7 @@ const UpdateGroup = () => {
                   placeholder="MD.Rohan islam "
                   className="w-full p-2 border border-gray-300 rounded bg-gray-200"
                   required
-                  readOnly
+                  disabled
                 />
               </div>
               {/* User Email  */}
@@ -200,7 +203,7 @@ const UpdateGroup = () => {
                   placeholder="rohan@gmail.com"
                   className="w-full p-2 border border-gray-300 rounded bg-gray-200"
                   required
-                  readOnly
+                  disabled
                 />
               </div>
               {/* Create Button */}

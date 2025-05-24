@@ -1,13 +1,20 @@
-import React from "react";
+
+import React, { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddNewPeople = () => {
+  const { user } = useContext(AuthContext);
+
   const handleAddPeople = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const newPeople = Object.fromEntries(formData.entries());
-    console.log(newPeople);
+
+   
+    newPeople.userName = user.displayName;
+    newPeople.userEmail = user.email;
 
     //send people data to the DB
     fetch("https://assignment-ten-server-site-brown.vercel.app/peoples", {
@@ -20,7 +27,6 @@ const AddNewPeople = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-         
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -150,7 +156,7 @@ const AddNewPeople = () => {
                   required
                 />
               </div>
-              {/* User Name  */}
+              {/* User Name */}
               <div className="mb-4">
                 <label htmlFor="userName" className="block text-gray-700 mb-2">
                   User Name
@@ -159,13 +165,12 @@ const AddNewPeople = () => {
                   type="text"
                   id="userName"
                   name="userName"
-                  placeholder="MD.Rohan islam "
+                  value={user?.displayName || ""}
                   className="w-full p-2 border border-gray-300 rounded bg-gray-200"
-                  required
                   readOnly
                 />
               </div>
-              {/* User Email  */}
+              {/* User Email */}
               <div className="mb-4">
                 <label htmlFor="userEmail" className="block text-gray-700 mb-2">
                   User Email
@@ -174,9 +179,8 @@ const AddNewPeople = () => {
                   type="email"
                   id="userEmail"
                   name="userEmail"
-                  placeholder="rohan@gmail.com"
+                  value={user?.email || ""}
                   className="w-full p-2 border border-gray-300 rounded bg-gray-200"
-                  required
                   readOnly
                 />
               </div>
@@ -198,3 +202,4 @@ const AddNewPeople = () => {
 };
 
 export default AddNewPeople;
+
