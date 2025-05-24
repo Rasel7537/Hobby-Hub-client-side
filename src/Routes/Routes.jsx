@@ -13,6 +13,7 @@ import Register from "../pages/Register/Register";
 import MyGroups from "../pages/MyGroups/MyGroups";
 import UpdateGroup from "../pages/UpdateGroup/UpdateGroup";
 import PrivateRoutes from "../provider/PrivateRoutes";
+import MyGroupPrivateRoutes from "../provider/MyGroupPrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
+        loader: () =>
+          fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: Home,
       },
       {
@@ -41,23 +43,33 @@ export const router = createBrowserRouter([
       },
       {
         path: "anothrGroupCard",
-        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
+        loader: () =>
+          fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: AnotherGroupCard,
       },
       {
         path: "addNewGroupDetails/:id",
-        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
+        loader: () =>
+          fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: GroupDetails,
       },
       {
         path: "MyGroups",
-        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
-        Component: MyGroups,
+        loader: () =>
+          fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
+        element: (
+          <MyGroupPrivateRoutes>
+            <MyGroups></MyGroups>
+          </MyGroupPrivateRoutes>
+        ),
+        // Component: MyGroups,
       },
       {
         path: "updateGroup/:id",
         loader: ({ params }) =>
-          fetch(`https://assignment-ten-server-site-brown.vercel.app/peoples/${params.id}`),
+          fetch(
+            `https://assignment-ten-server-site-brown.vercel.app/peoples/${params.id}`
+          ),
         Component: UpdateGroup,
       },
       {
@@ -71,5 +83,3 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
-
-
