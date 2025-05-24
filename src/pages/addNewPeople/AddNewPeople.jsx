@@ -10,7 +10,7 @@ const AddNewPeople = () => {
     console.log(newPeople);
 
     //send people data to the DB
-    fetch("http://localhost:3000/peoples", {
+    fetch("https://assignment-ten-server-site-brown.vercel.app/peoples", {
       method: "POST",
       headers: {
         "content-type": "application/json",

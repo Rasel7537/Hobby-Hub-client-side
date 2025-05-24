@@ -25,7 +25,7 @@ const UpdateGroup = () => {
     console.log(updatedGroup);
 
     //send updated group to the DB
-    fetch(`http://localhost:3000/peoples/${_id}`, {
+    fetch(`https://assignment-ten-server-site-brown.vercel.app/peoples/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

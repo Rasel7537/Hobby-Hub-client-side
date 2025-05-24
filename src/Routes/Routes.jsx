@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        loader: () => fetch("http://localhost:3000/peoples"),
+        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: Home,
       },
       {
@@ -41,23 +41,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "anothrGroupCard",
-        loader: () => fetch("http://localhost:3000/peoples"),
+        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: AnotherGroupCard,
       },
       {
         path: "addNewGroupDetails/:id",
-        loader: () => fetch("http://localhost:3000/peoples"),
+        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: GroupDetails,
       },
       {
         path: "MyGroups",
-        loader: () => fetch("http://localhost:3000/peoples"),
+        loader: () => fetch("https://assignment-ten-server-site-brown.vercel.app/peoples"),
         Component: MyGroups,
       },
       {
         path: "updateGroup/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/peoples/${params.id}`),
+          fetch(`https://assignment-ten-server-site-brown.vercel.app/peoples/${params.id}`),
         Component: UpdateGroup,
       },
       {
@@ -71,3 +71,5 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+
