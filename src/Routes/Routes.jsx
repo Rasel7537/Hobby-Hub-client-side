@@ -14,7 +14,6 @@ import MyGroups from "../pages/MyGroups/MyGroups";
 import UpdateGroup from "../pages/UpdateGroup/UpdateGroup";
 import PrivateRoutes from "../provider/PrivateRoutes";
 import MyGroupPrivateRoutes from "../provider/MyGroupPrivateRoutes";
-
 export const router = createBrowserRouter([
   {
     path: "/",
