@@ -57,6 +57,14 @@ const Navbar = () => {
           <Link className="btn btn-ghost text-xl text-blue-600 font-bold">
             Hobby Hub
           </Link>
+
+          <div>
+            <input
+              type="checkbox"
+              value="synthwave"
+              className="toggle theme-controller"
+            />
+          </div>
         </div>
 
         {/* Navbar Center (Navigation Links) */}
