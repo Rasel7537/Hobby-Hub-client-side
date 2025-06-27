@@ -2,7 +2,7 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { motion } from "framer-motion"; // ✅ শুধু এটুকু অ্যাড
+import { motion } from "framer-motion"; 
 
 const MyGroups = () => {
   const myGroup = useLoaderData();
