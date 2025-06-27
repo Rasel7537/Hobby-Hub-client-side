@@ -31,7 +31,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "AddNewPeople",
-        // Component: AddNewPeople,
         element: (
           <PrivateRoutes>
             <AddNewPeople></AddNewPeople>
