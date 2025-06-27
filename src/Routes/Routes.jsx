@@ -14,6 +14,8 @@ import MyGroups from "../pages/MyGroups/MyGroups";
 import UpdateGroup from "../pages/UpdateGroup/UpdateGroup";
 import PrivateRoutes from "../provider/PrivateRoutes";
 import MyGroupPrivateRoutes from "../provider/MyGroupPrivateRoutes";
+import ConnectUs from "../pages/ConnectUs/ConnectUs";
+import AboutUs from "../pages/AboutUs/AboutUs";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -61,7 +63,7 @@ export const router = createBrowserRouter([
             <MyGroups></MyGroups>
           </MyGroupPrivateRoutes>
         ),
-        // Component: MyGroups,
+        
       },
       {
         path: "updateGroup/:id",
@@ -70,6 +72,14 @@ export const router = createBrowserRouter([
             `https://assignment-ten-server-site-brown.vercel.app/peoples/${params.id}`
           ),
         Component: UpdateGroup,
+      },
+      {
+         path: "ConnectUs",
+         Component: ConnectUs
+      },
+      {
+        path:"AboutUs",
+        Component: AboutUs,
       },
       {
         path: "Login",

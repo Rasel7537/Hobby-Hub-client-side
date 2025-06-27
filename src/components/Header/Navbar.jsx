@@ -1,10 +1,11 @@
+
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import userpic from "../../assets/icons8-user-64.png";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -36,9 +37,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="mb-10">
-      <div className="navbar bg-base-100 shadow-md px-6 py-3 rounded-xl">
-        {/* Navbar Start (Logo) */}
+    // ✅ Sticky navbar wrapper
+    <div className="sticky top-0 z-50 bg-base-100 shadow-md rounded-xl backdrop-blur-md mb-6">
+      <div className="navbar px-6 py-3">
+        {/* Navbar Start */}
         <div className="navbar-start flex items-center gap-3">
           <img
             className="w-12 h-12"
@@ -67,7 +69,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Navbar Center (Navigation Links) */}
+        {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="flex gap-3">
             <NavLink
@@ -110,10 +112,30 @@ const Navbar = () => {
             >
               Create Hobby Group
             </NavLink>
+            <NavLink
+              to="/ConnectUs"
+              className={({ isActive }) =>
+                isActive
+                  ? "btn btn-sm bg-blue-600 text-white"
+                  : "btn btn-sm bg-blue-500 text-white hover:bg-blue-600"
+              }
+            >
+              Contact Us
+            </NavLink>
+            <NavLink
+              to="/AboutUs"
+              className={({ isActive }) =>
+                isActive
+                  ? "btn btn-sm bg-blue-600 text-white"
+                  : "btn btn-sm bg-blue-500 text-white hover:bg-blue-600"
+              }
+            >
+              About Us
+            </NavLink>
           </ul>
         </div>
 
-        {/* Navbar End (User Info + Logout/Login) */}
+        {/* Navbar End */}
         <div className="navbar-end flex items-center gap-4">
           {user && (
             <div className="relative group">
@@ -133,7 +155,6 @@ const Navbar = () => {
               <button
                 onClick={handleLogout}
                 className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
-                // data-tooltip-id="logout-tooltip"
               >
                 Logout
               </button>
